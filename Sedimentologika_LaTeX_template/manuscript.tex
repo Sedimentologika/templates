@@ -1,0 +1,256 @@
+% ======================================================================================== %
+%       LaTeX pre-print and submission and production template for Sedimentologika         %
+%             v1.0.0 - December 2025, Sedimentologika Steering Committee                    %
+% ======================================================================================== %
+%    This template and corresponding class are provided as is. Sedimentologika takes no
+%                  responsibility for your misuse of the provided files.
+%
+%                       It MUST be compiled using LuaLaTeX.
+%             TeXLive 2024 or higher, and Overleaf should work without issue.
+%
+%   There are comments throughout this tex file to assist you in generating your document.
+%
+%      If you are unable to compile your document and are using LuaLaTeX, first consult
+%                the readme.txt file, then if you need further assistance
+%                       contact us via admin@sedimentologika.org
+%
+%     If you discover a reproducible bug, please document the steps to reproduce it and
+%                      let the team know via admin@sedimentologika.org
+%
+% ======================================================================================== %
+%                                    Document class                                        %
+% ======================================================================================== %
+% Instruction: change the content in square brackets to suit your needs
+%
+% [preprint] to enable pre-print styling
+%
+% [submission] to enable submission styling suitable for Sedimentologika
+%
+% [submission, anonymous] to enable submission styling suitable for Sedimentologika
+%       The 'anonymous' option removes author names and attempts to strip metadata from the %       generated PDF.
+%
+%       IMPORTANT: It is the authors' responsibility to ensure that no identifying
+%       information remains in the file.
+%
+%       Sedimentologika is NOT RESPONSIBLE for any failure by the authors' to maintain
+%       anonymity during file generation or submission.
+%       If anonymity is requested, we will uphold it throughout the review process.
+%
+%       Note: Posting a pre-print is strongly encouraged. However, doing so may compromise
+%       anonymity, as the file becomes publicly accessible and searchable online.
+% ---------------------------------------------------------------------------------------- %
+\documentclass[preprint]{sedimentologika}
+% ---------------------------------------------------------------------------------------- %
+%  If generating a pre-print, review the below statement and alter to your needs.
+\preprintdeclaration{This is a pre-print and has not yet undergone peer-review. \\ It has been submitted to \textit{Sedimentologika}.}
+%
+% ======================================================================================== %
+%                                  Document languages                                      %
+% ======================================================================================== %
+\englishvariety{australian} % change to a valid English dialect for the Babel package
+
+% The below code is an example for enabling non-roman alphabet language support.
+% \babelfont[arabic]{rm}[
+%   Path = /usr/share/fonts/noto/ ,
+%   Extension = .ttf ,
+%   UprightFont = *-Regular ,
+%   BoldFont = *-Bold ,
+%   ItalicFont = *-Regular ,
+% BoldItalicFont = *-Bold]{NotoSansArabic}
+% \babelfont[arabic]{sf}[
+%   Path = /usr/share/fonts/noto/ ,
+%   Extension = .ttf ,
+%   UprightFont = *-Regular ,
+%   BoldFont = *-Bold ,
+%   ItalicFont = *-Regular ,
+% BoldItalicFont = *-Bold]{NotoSansArabic}
+% \babelfont[arabic]{tt}[
+%   Path = /usr/share/fonts/noto/ ,
+%   Extension = .ttf ,
+%   UprightFont = *-Regular ,
+%   BoldFont = *-Bold ,
+%   ItalicFont = *-Regular ,
+% BoldItalicFont = *-Bold]{NotoSansArabic}
+% ---------------------------------------------------------------------------------------- %
+
+% ======================================================================================== %
+%                                     Metadata                                             %
+% ======================================================================================== %
+%          You don't need to worry about these, they are for the editorial team
+%          they don't add information to [preprint] or [submission] files anyway.
+% ---------------------------------------------------------------------------------------- %
+\articletype{Research Article}
+\receiveddate{}
+\accepteddate{}
+\publisheddate{}
+\volumenumber{}
+\issuenumber{}
+\theyear{}
+\suppmat{}
+\articledoi{}
+\execedname{}
+\assocedname{}
+\prodmanname{}
+\copyedname{}
+\reviewername{}
+\authorshdr{}
+%
+% ======================================================================================== %
+%              Primary Article Information (tile, authors, contributions)                  %
+% ======================================================================================== %
+\title{This is a long title} % Replace this with your articles full title, no length limit, but keep it reasonable
+\shorttitle{A short title} % Replace "A short title", it needs to be ≤ 50 characters long.
+% ---------------------------------------------------------------------------------------- %
+%                          Instructions for author list.                                   %
+%
+%  For each author use \author[1]{Given Names FamilyName\orcidlink{ORCiD Number}}
+%      * where [1] is the affiliation number.
+%      * please list ORCiDs if you have them by adding the id as shown above
+%  Note the corresponding author with an asterisk after author name but before their ORCiD
+%  If an author does not have an ORCiD please remove the \orcidlink{orcid-val}
+%
+%  Define each affiliation with \affil[1]{Affiliation}
+%      * replace 1 with the next available number, for subsequent affiliations
+%      * authors can have multiple affiliations e.g. [1,2,4]
+%
+%                Add as many author and affiliation lines as you need
+\author[1,2]{Author A*\orcidlink{0000-0002-2771-9344}}
+\author[1]{Author B}
+\affil[1]{Affiliation 1}
+\affil[2]{Affiliation 2}
+%          replace author name and author email with the appropriate details
+\correspondingauthor{author name}{author email}
+%
+% ---------------------------------------------------------------------------------------- %
+%             CRediT Statement (this is mandatory for Sedimentologika)
+%                    See https://credit.niso.org/ for details.
+%   Instructions: add authors (can be just initials) to the appropriate roles, separate
+%   authors by a comma, turn off roles you don't use by commenting them out
+\CRediT{Writing-original draft}{AA}
+\CRediT{Writing-review \& editing}{AA, AB}
+\CRediT{Visualization}{AA, AB}
+\CRediT{Conceptualization}{AA, AB}
+\CRediT{Data curation}{AA, AB}
+\CRediT{Formal analysis}{AA, AB}
+\CRediT{Investigation}{AA, AB}
+\CRediT{Methodology}{AA, AB}
+\CRediT{Software}{AA, AB}
+\CRediT{Resources}{AA, AB}
+\CRediT{Validation}{AA, AB}
+\CRediT{Supervision}{AA, AB}
+\CRediT{Project administration}{AA, AB}
+\CRediT{Funding acquisition}{AA, AB}
+%
+% ---------------------------------------------------------------------------------------- %
+\keywords{Keyword 1\\Keyword 2} % List up to five keywords, separated by \\
+%
+% ======================================================================================== %
+%                             Additional Document Setup                                    %
+% ======================================================================================== %
+%                           Bibliography file - REQUIRED                                   %
+% \addbibresource{Example.json} % uncomment this and replace Example.json with your .bib or csl .json
+%                        The ref style is already set to APA7
+%
+%                                Acceptable figure types
+\DeclareGraphicsExtensions{png,eps,pdf,jpg}
+\graphicspath{{figures/}} % declare any subfolder(s) your figures are located in here
+\usepackage{graphicx} % leave this, it just enables the graphicx extension for you.
+
+% ---------------------------------------------------------------------------------------- %
+%                              Extra packages you need
+% Review the packages listed in the readme.txt, add any additional ones you need here.
+%     They should be readily available via CTAN or in the TeXLive 2024 or newer
+%     distributions.
+%
+% \usepackage{packagename}
+%
+% ======================================================================================== %
+%                                    Manuscript                                            %
+% ======================================================================================== %
+\begin{document} % leave this
+
+\SedKtitle{% plain langauge summary %
+  Replace this text with your \textbf{plain language summary}.
+  This section is mandatory.
+  The content should be a simplified summary of the article, suitable for non-experts.
+  It should not exceed 1000 characters including spaces.
+  The combined lengths of the abstract and plain language summary are somewhat flexible depending on the number of authors, affiliations, and CRedIT statement.
+}
+{% abstract %
+  Replace this text with your \textbf{abstract}.
+  This section is mandatory.
+  The content should be a summary of your article.
+  It should not exceed 2000 characters including spaces.
+  The combined lengths of the abstract and plain language summary are somewhat flexible depending on the number of authors, affiliations, and CRedIT statement.
+}
+{%
+  %\translation{language}{AbstractTranslationTitle}{Replace this text with the translation of your abstract if you are providing one. Remember to set the language to the appropriate \href{https://ctan.org/pkg/babel}{babel language code}. Otherwise, comment out this section.}
+  \translation{spanish}{Resumen}{
+    Reemplace este texto con la traducción de su resumen si va a proporcionarla.
+    Recuerde establecer el idioma con el \href{https://ctan.org/pkg/babel}{código de idioma de babel} correspondiente.
+    De lo contrario, comente esta sección.
+  }
+}
+
+% ---------------------------------------------------------------------------------------- %
+%                         This is the main part of your article
+%                         You can use up to level three headings
+%                       \section{}, \subsection{}, \subsubsection{}
+% ---------------------------------------------------------------------------------------- %
+
+\section{Introduction}
+This is a mandatory section, replace this text.
+
+See the example file and README for additional instructions for use of the template.
+
+\section{Section1}
+This is a section.
+
+\subsection{SubSection1}
+This is a subsection.
+
+\subsubsection{SubSubSection1}
+This is a subsubsection.
+
+\section{Conclusions}
+This is a mandatory section, replace this text.
+
+% ---------------------------------------------------------------------------------------- %
+%                              Post article matter goes here
+% ---------------------------------------------------------------------------------------- %
+\acknowledgements{
+  Replace this text with your acknowledgements.
+}
+
+% This is your data (and code) availability statement - it is mandatory, you must make your
+% data and code available via a repository such as Zenodo (Data), GitHub (Code - use Zenodo
+% to generate a doi see https://help.zenodo.org/docs/github/) etc.
+%
+% "Available upon request" is not an allowable statement.
+% Please contact Sedimentologika if your data cannot be made available due to legal reasons
+%
+\datacode{
+  Data used in this paper is hosted on Zenodo at \href{https://doi.org/10.1000/182}{doi.org/10.1000/182}, \verb|\cite{ExampleCitation}|.
+
+  The code used in this paper is available via \href{https://example.com} and archived on Zenodo at \href{https://doi.org/10.1000/182}{doi.org/10.1000/182}, \verb|\cite{ExampleCitation}|.
+}
+
+\supplementarymaterial{
+  If you have any additional supplementary material hosted in a repository for this manuscript please replace this with a statement linking to the doi, and add the citation,
+  e.g. Supplementary material for this paper can be found at \href{https://doi.org/10.1000/182}{doi.org/10.1000/182} \verb|\cite{ExampleCitation}|.
+}
+
+\conflictofinterest{
+  The authors declare they do not have any tangible or perceived conflicts of interest with regard to this research.
+}% change as appropriate, this is mandatory
+
+\artificialintelligence{
+  All research, analysis, writing, and editing were performed without generative AI assistance.
+} % change as appropriate, this is mandatory
+
+\funding{
+  Declare sources of funding for this research.
+} % change as appropriate, this is mandatory if stating no external funding sources
+
+% \printbibliography % uncomment this when you've added you reference library file.
+\end{document}
