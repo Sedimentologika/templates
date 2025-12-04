@@ -221,7 +221,7 @@ bib-item-sep = 8 pt plus 4 pt minus 2 pt}
 {
   \section*{Abstract}%
   \zsavepos{loc:beg_abstract}
-  \small
+
 }
 {
   \par
@@ -231,7 +231,7 @@ bib-item-sep = 8 pt plus 4 pt minus 2 pt}
 \newenvironment{translation}[3]{%
   \begin{otherlanguage}{#1}
     \section*{#2\;}
-    \small #3 \vglue 1\baselineskip
+     #3 \vglue 1\baselineskip
   \end{otherlanguage}
 }{
   \vskip 2mm
@@ -243,7 +243,7 @@ bib-item-sep = 8 pt plus 4 pt minus 2 pt}
 {
   \section*{Plain language summary}
   \zsavepos{loc:beg_plainlanguagesummary}
-  \small
+
 }%
 {
   \par
@@ -329,7 +329,7 @@ bib-item-sep = 8 pt plus 4 pt minus 2 pt}
 \newcommand{\Sedimentologika}{\textcolor{SedK1}{\textit{Sedimentologika}}}
 
 \newcommand{\@insert@preprintdeclaration}{%
-  \begin{textblock*}{40mm}[1,0](195mm,\dimexpr\pageheight-3mm-\zposy{loc:beg_plainlanguagesummary}sp\relax)
+  \begin{textblock*}{40mm}[1,0](195mm,\dimexpr\pageheight-3mm-\zposy{loc:beg_abstract}sp\relax)
     \bfseries\raggedleft%
     \setlength{\parskip}{\baselineskip}%
     \setlength{\parindent}{\z@}%
@@ -339,7 +339,7 @@ bib-item-sep = 8 pt plus 4 pt minus 2 pt}
 }
 
 \newcommand{\@insert@metadata}{%
-  \begin{textblock*}{40mm}[1,0](195mm,\dimexpr\pageheight-3mm-\zposy{loc:beg_plainlanguagesummary}sp\relax
+  \begin{textblock*}{40mm}[1,0](195mm,\dimexpr\pageheight-3mm-\zposy{loc:beg_abstract}sp\relax
     )
     \footnotesize
     \linespread{1.3}
@@ -372,9 +372,9 @@ bib-item-sep = 8 pt plus 4 pt minus 2 pt}
 %  basic formatting, declaration of styles
 % ----------------------------------------------------------------------------------------
 
-% \clubpenalty10000
-% \widowpenalty10000
-% \brokenpenalty10000
+\clubpenalty10000
+\widowpenalty10000
+\brokenpenalty10000
 % \predisplaypenalty10000
 % \postdisplaypenalty10000
 % \displaywidowpenalty10000
@@ -585,7 +585,7 @@ bib-item-sep = 8 pt plus 4 pt minus 2 pt}
   }
 
   \preauthor{
-    \lineskip 0.2em
+    \lineskip 0.5em
     \begin{RaggedRight}
     }
 
@@ -593,7 +593,7 @@ bib-item-sep = 8 pt plus 4 pt minus 2 pt}
       \printCRediTifnotempty
       \@correspondingauthor
     \end{RaggedRight}
-    \vspace*{-5mm}
+    \vspace*{-1mm}
   }
 
   \predate{}
@@ -679,19 +679,20 @@ bib-item-sep = 8 pt plus 4 pt minus 2 pt}
         \fi
       }
       \changetext{}{100mm}{}{}{}
-      \plainlanguagesummary{#1}
+
       \abstract{#2}
       \vspace{\fill}
     ]
     \ifx#3\@empty
-      % \twocolumn[
-      %   \vglue 1.2\baselineskip
-      % ]
+      \twocolumn[
+          \plainlanguagesummary{#1}
+      \vglue 1\baselineskip
+       ]
     \else
       \twocolumn[
-      % \plainlanguagesummary{#1} % if we need to bump the pls due to abstract lengths
+      \plainlanguagesummary{#1} % if we need to bump the pls due to abstract lengths
       #3
-      \vglue 0.25\baselineskip
+      \vglue 1\baselineskip
       ]
     \fi
   }
