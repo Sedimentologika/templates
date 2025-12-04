@@ -430,6 +430,10 @@ bib-item-sep = 8 pt plus 4 pt minus 2 pt}
 
 \captionsetup{font=small, labelfont=bf, justification=justified, labelsep=endash, skip = 5pt, singlelinecheck=off}
 
+\setlength{\textfloatsep}{5mm plus 1mm minus 1mm}
+\setlength{\dbltextfloatsep}{5mm plus 1mm minus 1mm}
+\setlength{\intextsep}{5mm plus 1mm minus 1mm}
+
 % Section label formatting
 \titleformat{name=\section, numberless}{\RaggedRight\fontsize{9pt}{15pt}\bfseries}{}{0em}{}[]
 \titleformat{name=\section}{\RaggedRight\fontsize{11pt}{17pt}\bfseries}{\thesection}{0.5em}{}
@@ -687,7 +691,7 @@ bib-item-sep = 8 pt plus 4 pt minus 2 pt}
       \twocolumn[
       % \plainlanguagesummary{#1} % if we need to bump the pls due to abstract lengths
       #3
-      \vglue 0.9\baselineskip
+      \vglue 0.25\baselineskip
       ]
     \fi
   }
