@@ -10,7 +10,7 @@
 % Class declaration and switches
 % ----------------------------------------------------------------------------------------
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{sedimentologika}[2025-112-02 Sedimentologika LaTeX class]
+\ProvidesClass{sedimentologika}[2025-12-04 Sedimentologika LaTeX class]
 
 \newif\if@onecolumn
 \@onecolumnfalse
@@ -58,10 +58,9 @@
 \RequirePackage{commath}
 \RequirePackage{amssymb}
 \RequirePackage{booktabs}
+\RequirePackage{nicematrix}
 \RequirePackage{longtable}
 \RequirePackage{multirow}[longtable]
-\RequirePackage{arydshln}
-\RequirePackage{nicematrix}
 \RequirePackage{ragged2e}
 \RequirePackage{graphics}
 \RequirePackage[version=4]{mhchem}
@@ -79,7 +78,6 @@
 \RequirePackage{url}
 \RequirePackage{doi}
 \RequirePackage{pdflscape}
-% \RequirePackage{afterpage}
 \RequirePackage{hyperref}
 \RequirePackage{setspace}
 \RequirePackage{datatool}
@@ -213,19 +211,6 @@ bib-item-sep = 8 pt plus 4 pt minus 2 pt}
 \newcolumntype{R}[1]{>{\PreserveBackslash\RaggedLeft}p{#1}}
 \newcolumntype{L}[1]{>{\PreserveBackslash\RaggedRight}p{#1}}
 \newcolumntype{M}[1]{>{\PreserveBackslash\centering}m{#1}}
-
-% cline (var width)
-\def\Cline#1#2{\@Cline#1#2\@nil}
-\def\@Cline#1-#2#3\@nil{%
-  \omit
-  \@multicnt#1%
-  \advance\@multispan\m@ne
-  \ifnum\@multicnt=\@ne\@firstofone{&\omit}\fi
-  \@multicnt#2%
-  \advance\@multicnt-#1%
-  \advance\@multispan\@ne
-  \leaders\hrule\@height#3\hfill
-  \cr}
 
 \newcommand*{\rot}[1]{\rotatebox[origin=c]{#1}}
 
