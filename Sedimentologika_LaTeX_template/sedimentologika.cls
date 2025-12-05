@@ -10,7 +10,7 @@
 % Class declaration and switches
 % ----------------------------------------------------------------------------------------
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{sedimentologika}[2025-12-04 Sedimentologika LaTeX class]
+\ProvidesClass{sedimentologika}[2025-12-05 Sedimentologika LaTeX class]
 
 \newif\if@onecolumn
 \@onecolumnfalse
@@ -85,7 +85,15 @@
 \RequirePackage{changepage}
 \RequirePackage[thepage, savepos]{zref}
 \RequirePackage{hyperxmp}
-\RequirePackage[hmargin=15mm, vmargin=20mm, headsep=1mm, footskip=6mm]{geometry}
+\RequirePackage[
+  hmargin=15mm,
+  vmargin=20mm,
+  headsep=1mm,
+  footskip=6mm,
+  marginparsep=1mm,
+  marginparwidth=10mm,
+  % showframe
+  ]{geometry}
 \RequirePackage[parfill, skip={\baselinestretch}]{parskip}
 \RequirePackage{fancyhdr}
 
@@ -150,7 +158,7 @@ bib-item-sep = 8 pt plus 4 pt minus 2 pt}
 \newcommand{\onecolwidth}{86mm}
 \newcommand{\twocolwidth}{\textwidth}
 
-\newcommand{\email}[1]{\texttt{\textcolor{SedK4}{\scriptsize #1}}}
+\newcommand{\email}[1]{\texttt{\textcolor{SedK2}{\scriptsize #1}}}
 
 % Author stuff
 \renewcommand*{\Authsep}{, }
@@ -311,13 +319,43 @@ bib-item-sep = 8 pt plus 4 pt minus 2 pt}
 
 \newenvironment{specialsection}[1]
 {
-  \section*{#1\;}\textbullet\quad
+  \section*{#1}
   \small
 }%
 {
   \par
   \normalsize
 }
+
+\newenvironment{citing}[1]
+{
+  \section*{Citing this \@articletype}
+  \RaggedRight\small
+  To cite this paper use the following information:
+
+  \textbf{\textcolor{SedK1}{Authors}}\linebreak
+  #1
+
+  \textbf{\textcolor{SedK1}{Title}}\linebreak
+  \@title
+
+  \textbf{\textcolor{SedK1}{Short Title}}\linebreak
+  \@shorttitle
+
+  \textbf{\textcolor{SedK1}{Publishing Information}}\linebreak
+  Publication: Sedimentologika\linebreak
+  Volume: \@volumenumber\linebreak
+  Issue: \@issuenumber\linebreak
+  Year: \@theyear\linebreak
+  DOI: \href{https://doi.org/\@articledoi}{\@articledoi}\linebreak
+  Language: en\linebreak
+  License: \href{https://creativecommons.org/licenses/by/4.0/}{CC-BY 4.0}
+}%
+{
+  \par
+  \normalsize
+}
+
 
 \newcommand{\preprintdeclaration}[1]{\gdef\@preprintdeclaration{#1}}
 % % -------------------------------------------------------------------------------
@@ -394,45 +432,45 @@ bib-item-sep = 8 pt plus 4 pt minus 2 pt}
 
 \IfFontExistsTF{Noto Sans}{%
   \babelfont{rm}[%
-    BoldFont={NotoSans-VariableFont_wdth,wght},
-    ItalicFont={NotoSans-Italic-VariableFont_wdth,wght},
-    BoldItalicFont={NotoSans-Italic-VariableFont_wdth,wght},
+    BoldFont={notosans-variablefont_wdth,wght.ttf},
+    ItalicFont={notosans-italic-variablefont_wdth,wght.ttf},
+    BoldItalicFont={notosans-italic-variablefont_wdth,wght.ttf},
     Numbers={Proportional,Lining},
     UprightFeatures={Weight=350},
     ItalicFeatures={Weight=350},
     BoldFeatures={Weight=600}
-  ]{NotoSans-VariableFont_wdth,wght}
+  ]{notosans-variablefont_wdth,wght.ttf}
   \babelfont{sf}[%
-    BoldFont={NotoSans-VariableFont_wdth,wght},
-    ItalicFont={NotoSans-Italic-VariableFont_wdth,wght},
-    BoldItalicFont={NotoSans-Italic-VariableFont_wdth,wght},
+    BoldFont={notosans-variablefont_wdth,wght.ttf},
+    ItalicFont={notosans-italic-variablefont_wdth,wght.ttf},
+    BoldItalicFont={notosans-italic-variablefont_wdth,wght.ttf},
     Numbers={Proportional,Lining},
     UprightFeatures={Weight=350},
     ItalicFeatures={Weight=350},
     BoldFeatures={Weight=600}
-  ]{NotoSans-VariableFont_wdth,wght}
+  ]{notosans-variablefont_wdth,wght.ttf}
 }{\RequirePackage[sfdefault]{noto}}
 
 \IfFontExistsTF{Noto Sans Mono}{%
   \babelfont{tt}[%
-    BoldFont={NotoSansMono-VariableFont_wdth,wght},
+    BoldFont={notosansmono-variablefont_wdth,wght.ttf},
     Numbers={Proportional,Lining},
     UprightFeatures={Weight=400},
     BoldFeatures={Weight=700}
-  ]{NotoSansMono-VariableFont_wdth,wght}
+  ]{notosansmono-variablefont_wdth,wght.ttf}
 }{\RequirePackage{noto-mono}}
 
 \IfFontExistsTF{Noto Sans Math Regular}{
-  \setmathfont{NotoSansMath-Regular}
+  \setmathfont{notosansmath-regular}
 }{
   \RequirePackage{notomath}
 }
 
 \captionsetup{font=small, labelfont=bf, justification=justified, labelsep=endash, skip = 5pt, singlelinecheck=off}
 
-\setlength{\textfloatsep}{5mm plus 1mm minus 1mm}
-\setlength{\dbltextfloatsep}{5mm plus 1mm minus 1mm}
-\setlength{\intextsep}{5mm plus 1mm minus 1mm}
+\setlength{\textfloatsep}{6mm plus 1mm minus 1mm}
+\setlength{\dbltextfloatsep}{6mm plus 1mm minus 1mm}
+\setlength{\intextsep}{6mm plus 1mm minus 1mm}
 
 % Section label formatting
 \titleformat{name=\section, numberless}{\RaggedRight\fontsize{9pt}{15pt}\bfseries}{}{0em}{}[]
@@ -453,7 +491,15 @@ bib-item-sep = 8 pt plus 4 pt minus 2 pt}
 \pagestyle{empty}
 
 \if@preprint
-\hypersetup{colorlinks=true, linkcolor=blue, anchorcolor=black, citecolor=blue,   filecolor=black, menucolor=black, runcolor=black, urlcolor=blue}
+\hypersetup{
+   colorlinks=true,
+   linkcolor=blue,
+   anchorcolor=black,
+   citecolor=blue,
+   filecolor=black,
+   menucolor=black,
+   runcolor=black,
+   urlcolor=blue}
 \renewcommand*\headrule{
   \nointerlineskip
   \smash{\color{black}\rule{\headwidth}{0.25pt}}
@@ -471,7 +517,15 @@ bib-item-sep = 8 pt plus 4 pt minus 2 pt}
   \fi
 }
 \else
-\hypersetup{colorlinks=true, linkcolor=SedK4, anchorcolor=black, citecolor=SedK2,   filecolor=black, menucolor=black, runcolor=black, urlcolor=SedK4}
+\hypersetup{
+   colorlinks=true,
+   linkcolor=SedK3,
+   anchorcolor=black,
+   citecolor=SedK2,
+   filecolor=black,
+   menucolor=black,
+   runcolor=black,
+   urlcolor=SedK3}
 \renewcommand*\headrule{
   \nointerlineskip
   \smash{\color{SedK1}\rule{\headwidth}{0.25pt}}
@@ -541,38 +595,44 @@ bib-item-sep = 8 pt plus 4 pt minus 2 pt}
 }
 
 \fancypagestyle{fancyps_prooffirstpage}{
-  \setlength{\headheight}{10mm}
-  \addtolength{\topmargin}{-6mm}
+  \setlength{\headheight}{15mm}
+  \addtolength{\topmargin}{-10mm}
   \fancyhf{}
-  \fancyhead[L]{\includegraphics[height=12mm]{Sedimentologika_final_black.png}\tiny\par\small\textcolor[HTML]{5e5e5e}{\raisebox{-0.7ex}{\normalsize\simpleicon{doi}}}\href{https://example.com}{\enspace\small PROOF}}
+  \fancyhead[L]{
+    \includegraphics[height=12mm]{Sedimentologika_final_black.png}\tiny\par\small\textcolor[HTML]{5e5e5e}{\raisebox{-0.7ex}{\normalsize\simpleicon{doi}}}\href{https://example.com}{\enspace\small PROOF}
+    }
   \fancyfoot[L]{\textcolor{SedK2}{\scriptsize\nouppercase{PROOF~\today}}}
   \fancyfoot[R]{\textcolor{SedK2}{\scriptsize\thepage}}
   \renewcommand\headrule{\nointerlineskip\smash{\color{SedK1}\rule{\headwidth}{0.0pt}}}
 }
 
 \fancypagestyle{fancyps_publicationfirstpage}{
-  \setlength{\headheight}{10mm}
-  \addtolength{\topmargin}{-6mm}
+  \setlength{\headheight}{15mm}
+  \addtolength{\topmargin}{-10mm}
   \fancyhf{}
-  \fancyhead[L]{\includegraphics[height=12mm]{Sedimentologika_final_black.png}\tiny\par\textcolor[HTML]{5e5e5e}{\raisebox{-0.7ex}{\normalsize\simpleicon{doi}}}\href{https://doi.org/\@articledoi}{\enspace\small\@articledoi}}
-  \fancyfoot[L]{\textcolor{SedK2}{\scriptsize\nouppercase{\textbf{SEDIMENTOLOGIKA}~ \textbullet~\@theyear~\textbar~Vol.~\@volumenumber.\@issuenumber~\textbar~eISSN 2813-415X \textbar~\href{https://www.unige.ch/biblio/en/openaccess/publish-a-journal/open-access-publications/}{Published by Geneva University Library Open Access Publications}}}}
+  \fancyhead[L]{
+    \includegraphics[height=12mm]{Sedimentologika_final_black.png}\tiny\par\textcolor[HTML]{5e5e5e}{\raisebox{-0.7ex}{\normalsize\simpleicon{doi}}}\href{https://doi.org/\@articledoi}{\enspace\small\@articledoi}
+    }
+  \fancyfoot[L]{
+    \textcolor{SedK2}{\scriptsize\nouppercase{\textbf{SEDIMENTOLOGIKA}~ \textbullet~\@theyear~\textbar~Vol.~\@volumenumber.\@issuenumber~\textbar~eISSN 2813-415X \textbar~\href{https://www.unige.ch/biblio/en/openaccess/publish-a-journal/open-access-publications/}{Published by Geneva University Library Open Access Publications}}}
+    }
   \fancyfoot[R]{\textcolor{SedK2}{\scriptsize\thepage}}
   \renewcommand\headrule{\nointerlineskip\smash{\color{SedK1}\rule{\headwidth}{0.0pt}}}
-}
-% ----------------------------------------------------------------------------------------
-% Class option switches
-% ----------------------------------------------------------------------------------------
+  }
+  % ----------------------------------------------------------------------------------------
+  % Class option switches
+  % ----------------------------------------------------------------------------------------
 
-\if@preprint
-\pretitle{
+  \if@preprint
+  \pretitle{
   \begin{RaggedRight}
-    \LARGE
-    \bfseries
+  \fontsize{18pt}{18pt}\selectfont
+  \bfseries
   }
   \else
   \pretitle{
-    \begin{RaggedRight}
-      \LARGE
+    \begin{RaggedRight}\vspace*{-1\baselineskip}
+      \fontsize{18pt}{18pt}\selectfont
       \bfseries
       \textcolor{SedK1}
     }
@@ -581,11 +641,10 @@ bib-item-sep = 8 pt plus 4 pt minus 2 pt}
     \posttitle{
       \par
     \end{RaggedRight}
-    \vspace{0.5em}
+    \vspace{1\baselineskip}
   }
 
   \preauthor{
-    \lineskip 0.5em
     \begin{RaggedRight}
     }
 
@@ -605,12 +664,12 @@ bib-item-sep = 8 pt plus 4 pt minus 2 pt}
   \renewcommand\maketitlehookd{%
     \@insert@metadata
     \begin{RaggedRight}
-      \begin{textblock*}{0.8\textwidth}[0,1](15mm,276mm)
-        \footnotesize\textcolor{SedK1}{This open access article by \authors~is licensed under the \href{https://creativecommons.org/licenses/by/4.0/}{CC BY 4.0 license.}\\\copyright~\@theyear~\authors}
+      \begin{textblock*}{0.8\textwidth}[0,1](15mm,278mm)
+        \footnotesize\textcolor{SedK1}{This open access article \copyright~\@theyear~\authors~is licensed under the \href{https://creativecommons.org/licenses/by/4.0/}{CC BY 4.0 license.}}
       \end{textblock*}
     \end{RaggedRight}
     \begin{flushright}
-      \begin{textblock*}{20mm}[1,1](195mm,274mm)
+      \begin{textblock*}{20mm}[1,1](195mm,277.5mm)
         \promohref[SedkGrey]{https://creativecommons.org/licenses/by/4.0/}
         {\ccby}
       \end{textblock*}
@@ -623,12 +682,12 @@ bib-item-sep = 8 pt plus 4 pt minus 2 pt}
   \renewcommand\maketitlehookd{%
     \@insert@metadata
     \begin{RaggedRight}
-      \begin{textblock*}{0.8\textwidth}[0,1](15mm,276mm)
-        \footnotesize\textcolor{SedK1}{This open access article by \authors~is licensed under the \href{https://creativecommons.org/licenses/by/4.0/}{CC BY 4.0 license.}\\\copyright~\@theyear~\authors}
+      \begin{textblock*}{0.8\textwidth}[0,1](15mm,278mm)
+        \footnotesize\textcolor{SedK1}{This open access article \copyright~\@theyear~\authors~is licensed under the \href{https://creativecommons.org/licenses/by/4.0/}{CC BY 4.0 license.}}
       \end{textblock*}
     \end{RaggedRight}
     \begin{flushright}
-      \begin{textblock*}{20mm}[1,1](195mm,274mm)
+      \begin{textblock*}{20mm}[1,1](195mm,277.5mm)
         \promohref[SedkGrey]{https://creativecommons.org/licenses/by/4.0/}
         {\ccby}
       \end{textblock*}
