@@ -7,22 +7,34 @@
 %
 %                       It MUST be compiled using LuaLaTeX.
 %             TeXLive 2024 or higher, and Overleaf should work without issue.
+%                         Tested on TeXLive 2025, Overleaf
 %
 %   There are comments throughout this tex file to assist you in generating your document.
 %
 %      If you are unable to compile your document and are using LuaLaTeX, first consult
 %                the readme.txt file, then if you need further assistance
-%                       contact us via admin@sedimentologika.org
+%                       contact us via support@sedimentologika.org
 %
 %     If you discover a reproducible bug, please document the steps to reproduce it and
-%                      let the team know via admin@sedimentologika.org
+%                      let the team know via support@sedimentologika.org
 %
 % ======================================================================================== %
 %                                    Document class                                        %
 % ======================================================================================== %
-% Instruction: change the content in square brackets to suit your needs
+% INSTRUCTION: change the content in square brackets to suit your needs using the below
+% options
+% ---------------------------------------------------------------------------------------- %
+\documentclass[preprint]{sedimentologika}
+% ---------------------------------------------------------------------------------------- %
 %
 % [preprint] to enable pre-print styling
+%
+% INSTRUCTION: If generating a pre-print, review the below statement and alter to
+% your needs.
+\preprintdeclaration{
+  This is a pre-print and has not yet undergone peer-review.
+  It has been submitted to \textit{Sedimentologika}.
+  }
 %
 % [submission] to enable submission styling suitable for Sedimentologika
 %
@@ -38,18 +50,24 @@
 %
 %       Note: Posting a pre-print is strongly encouraged. However, doing so may compromise
 %       anonymity, as the file becomes publicly accessible and searchable online.
-% ---------------------------------------------------------------------------------------- %
-\documentclass[preprint]{sedimentologika}
-% ---------------------------------------------------------------------------------------- %
-%  If generating a pre-print, review the below statement and alter to your needs.
-\preprintdeclaration{This is a pre-print and has not yet undergone peer-review. \\ It has been submitted to \textit{Sedimentologika}.}
 %
 % ======================================================================================== %
 %                                  Document languages                                      %
 % ======================================================================================== %
-\englishvariety{australian} % change to a valid English dialect for the Babel package
-
-% The below code is an example for enabling non-roman alphabet language support.
+% INSTRUCTION: Change the language in the curly braces to a valid English dialect from the
+% babel package (english, american, australian, british, canadian, newzealand) that you
+%  will use for your manuscript
+% ---------------------------------------------------------------------------------------- %
+\englishvariety{australian}
+% ---------------------------------------------------------------------------------------- %
+%
+% ---------------------------------------------------------------------------------------- %
+% ADVANCED USAGE FOR NON-ROMAN ALPHABET LANGUAGE SUPPORT IN TRANSLATION
+% ---------------------------------------------------------------------------------------- %
+% The below commented out code is an example for enabling non-roman alphabet (e.g. Arabic)
+% language support. You will need to have the appropriate Noto Sans font installed on your
+% system. Contact support@sedimentologika.org if you are unable to get this working.
+%
 % \babelfont[arabic]{rm}[
 %   Path = /usr/share/fonts/noto/ ,
 %   Extension = .ttf ,
@@ -72,14 +90,14 @@
 %   ItalicFont = *-Regular ,
 % BoldItalicFont = *-Bold]{NotoSansArabic}
 % ---------------------------------------------------------------------------------------- %
-
+%
 % ======================================================================================== %
 %                                     Metadata                                             %
 % ======================================================================================== %
 %          You don't need to worry about these, they are for the editorial team
 %          they don't add information to [preprint] or [submission] files anyway.
 % ---------------------------------------------------------------------------------------- %
-\articletype{Research Article}
+\articletype{}
 \receiveddate{}
 \accepteddate{}
 \publisheddate{}
