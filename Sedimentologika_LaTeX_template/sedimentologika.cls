@@ -10,7 +10,7 @@
 % Class declaration and switches
 % ----------------------------------------------------------------------------------------
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{sedimentologika}[2025-12-05 Sedimentologika LaTeX class]
+\ProvidesClass{sedimentologika}[2025-12-10 Sedimentologika LaTeX class]
 
 \newif\if@onecolumn
 \@onecolumnfalse
@@ -69,6 +69,7 @@
 \RequirePackage{titling}
 \RequirePackage[noblocks]{authblk}
 \RequirePackage{titlesec}
+\RequirePackage{titleps}
 \RequirePackage[stamp=false, color={[gray]{0.9}}, fontsize=72pt]{draftwatermark}
 \RequirePackage[english, bidi=basic, provide*=*]{babel}
 \RequirePackage[babel=true, nopatch=footnote]{microtype}
@@ -88,14 +89,14 @@
 \RequirePackage[
   hmargin=15mm,
   vmargin=20mm,
-  headsep=1mm,
-  footskip=6mm,
+  headsep=2mm,
+  footskip=5mm,
   marginparsep=1mm,
   marginparwidth=10mm,
   % showframe
-  ]{geometry}
+]{geometry}
 \RequirePackage[parfill, skip={\baselinestretch}]{parskip}
-\RequirePackage{fancyhdr}
+\RequirePackage{afterpage}
 
 \if@submission
 \cslsetup{style=apa, bib-item-sep = 8 pt plus 4 pt minus 2 pt}
@@ -114,23 +115,6 @@ bib-item-sep = 8 pt plus 4 pt minus 2 pt}
 % ----------------------------------------------------------------------------------------
 %  Custom commands
 % ----------------------------------------------------------------------------------------
-% \renewcommand{\@maketitle}{
-%   \newpage
-%   \null
-%   \begin{RaggedRight}
-%     \let \footnote \thanks {\LARGE \@title \par }
-%     \vskip 1.5em
-%     {\large \lineskip .5em
-%       \begin{tabular}[t]{l}
-%         \@author
-%     \end{tabular}\par}
-%     \vskip 1em
-%     {\large \@date }
-%   \end{RaggedRight}
-%   \par
-%   \vskip 1.5em
-% }
-
 \newcommand{\englishvariety}[1]{\gdef\@englishvariety{#1}}
 
 \newcommand{\shorttitle}[1]{\gdef\@shorttitle{#1}}
@@ -239,10 +223,9 @@ bib-item-sep = 8 pt plus 4 pt minus 2 pt}
 \newenvironment{translation}[3]{%
   \begin{otherlanguage}{#1}
     \section*{#2\;}
-     #3 \vglue 1\baselineskip
+    #3
   \end{otherlanguage}
 }{
-  \vskip 2mm
   \par
   \normalsize
 }
@@ -355,7 +338,6 @@ bib-item-sep = 8 pt plus 4 pt minus 2 pt}
   \par
   \normalsize
 }
-
 
 \newcommand{\preprintdeclaration}[1]{\gdef\@preprintdeclaration{#1}}
 % % -------------------------------------------------------------------------------
@@ -486,148 +468,243 @@ bib-item-sep = 8 pt plus 4 pt minus 2 pt}
 \setcounter{secnumdepth}{3}
 
 % ----------------------------------------------------------------------------------------
-% Fancyhdr styles
+% Hyperlink and CRediT styling
 % ----------------------------------------------------------------------------------------
-\pagestyle{empty}
 
 \if@preprint
-\hypersetup{
-   colorlinks=true,
-   linkcolor=blue,
-   anchorcolor=black,
-   citecolor=blue,
-   filecolor=black,
-   menucolor=black,
-   runcolor=black,
-   urlcolor=blue}
-\renewcommand*\headrule{
-  \nointerlineskip
-  \smash{\color{black}\rule{\headwidth}{0.25pt}}
-}
-\renewcommand*\footrule{
-  \nointerlineskip
-  \smash{\color{black}\rule{\headwidth}{0.25pt}}
-}
-\newcommand{\printCRediTifnotempty}{%
-  \ifdim\DTLrowcount{CRediTs}pt=0pt
-  \else
-  \vglue 0.5\baselineskip
-  \footnotesize\RaggedRight\textcolor{black}{\textbf{CRediT statement: }}
-  \DTLforeach*{CRediTs}{\Credrole=credrole, \Credauthor=credauthor}{\textcolor{black}{ \textit{\Credrole}: \Credauthor. }}
-  \fi
-}
+  \hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    anchorcolor=black,
+    citecolor=blue,
+    filecolor=black,
+    menucolor=black,
+    runcolor=black,
+    urlcolor=blue
+  }
+
+  \newcommand{\printCRediTifnotempty}{%
+    \ifdim\DTLrowcount{CRediTs}pt=0pt
+    \else
+    \vglue 0.5\baselineskip
+    \footnotesize\RaggedRight\textcolor{black}{\textbf{CRediT statement: }}
+    \DTLforeach*{CRediTs}{
+    \Credrole=credrole, \Credauthor=credauthor}{\textcolor{black}{ \textit{\Credrole}: \Credauthor. }
+    }
+    \fi
+  }
+
 \else
-\hypersetup{
-   colorlinks=true,
-   linkcolor=SedK3,
-   anchorcolor=black,
-   citecolor=SedK2,
-   filecolor=black,
-   menucolor=black,
-   runcolor=black,
-   urlcolor=SedK3}
-\renewcommand*\headrule{
-  \nointerlineskip
-  \smash{\color{SedK1}\rule{\headwidth}{0.25pt}}
-}
-\newcommand{\printCRediTifnotempty}{%
-  \ifdim\DTLrowcount{CRediTs}pt=0pt
-  \else
-  \vglue 0.5\baselineskip
-  \footnotesize\RaggedRight\textcolor{SedK2}{\textbf{CRediT statement: }}
-  \DTLforeach*{CRediTs}{\Credrole=credrole, \Credauthor=credauthor}{\textcolor{SedK2}{ \textit{\Credrole}: \Credauthor. }}
-  \fi
-}
-\renewcommand*\footrule{
-  \nointerlineskip
-  \smash{\color{SedK1}\rule{\headwidth}{0.25pt}}
-}
+  \hypersetup{
+    colorlinks=true,
+    linkcolor=SedK3,
+    anchorcolor=black,
+    citecolor=SedK2,
+    filecolor=black,
+    menucolor=black,
+    runcolor=black,
+    urlcolor=SedK3
+  }
+
+  \newcommand{\printCRediTifnotempty}{%
+    \ifdim\DTLrowcount{CRediTs}pt=0pt
+    \else
+    \vglue 0.5\baselineskip
+    \footnotesize\RaggedRight\textcolor{SedK2}{\textbf{CRediT statement: }}
+    \DTLforeach*{CRediTs}{
+    \Credrole=credrole, \Credauthor=credauthor}{\textcolor{SedK2}{ \textit{\Credrole}: \Credauthor. }
+    }
+    \fi
+  }
+
 \fi
 
-\fancypagestyle{fancyps_preprint}{
-  \fancyhf{}
-  \fancyhead[L]{\scriptsize\nouppercase\authors}
-  \fancyhead[R]{\scriptsize\itshape \@shorttitle}
-  \fancyfoot[L]{\scriptsize{PRE-PRINT: \today}}
-  \fancyfoot[C]{\scriptsize\itshape{\@preprintdeclaration}}
-  \fancyfoot[R]{\scriptsize\thepage}
+% ----------------------------------------------------------------------------------------
+% Page styles
+% ----------------------------------------------------------------------------------------
+% Preprint styles
+
+\newpagestyle{ps_preprint}[\scriptsize]{
+  \headrule
+  \sethead[\authors]
+  []
+  [\itshape\@shorttitle]
+  {\authors}
+  {}
+  {\itshape\@shorttitle}
+  \footrule
+  \setfoot[PRE-PRINT GENERATED: \today]
+  []
+  [\thepage]
+  {\itshape{\@preprintdeclaration}}
+  {}
+  {\thepage}
+  \renewcommand{\makeheadrule}{\rule[-0.35\baselineskip]{\linewidth}{0.25pt}}
+  \renewcommand{\makefootrule}{\rule[0.65\baselineskip]{\linewidth}{0.25pt}}
 }
 
-\fancypagestyle{fancyps_submission}{
-  \fancyhf{}
-  \fancyhead[L]{\textcolor{SedK2}{\scriptsize\@shorttitle}}
-  \fancyfoot[L]{\textcolor{SedK2}{\scriptsize\nouppercase{Manuscript submitted to Sedimentologika}}}
-  \fancyfoot[R]{\textcolor{SedK2}{\scriptsize\thepage}}
+\newpagestyle{ps_preprint_first}[\scriptsize]{
+  \headrule
+  \sethead[]
+  []
+  []
+  {}
+  {\normalsize\@preprintdeclaration}
+  {}
+  \footrule
+  \setfoot[]
+  []
+  []
+  {PRE-PRINT GENERATED: \today}
+  {}
+  {\thepage}
+  \renewcommand{\makeheadrule}{\rule[-0.35\baselineskip]{\linewidth}{0.25pt}}
+  \renewcommand{\makefootrule}{\rule[0.65\baselineskip]{\linewidth}{0.25pt}}
 }
 
-\fancypagestyle{fancyps_proof}{
-  \fancyhf{}
-  \fancyhead[L]{\textcolor{SedK2}{\scriptsize\nouppercase\authors}}
-  \fancyhead[R]{\textcolor{SedK2}{\scriptsize\itshape\@shorttitle}}
-  \fancyfoot[L]{\textcolor{SedK2}{\scriptsize\nouppercase{\textbf{SEDIMENTOLOGIKA}~
-  \textbullet~PROOF}}}
-  \fancyfoot[R]{\textcolor{SedK2}{\scriptsize\thepage}}
+% ---------------------------------
+% Submission styles
+
+
+\newpagestyle{ps_submission}[\scriptsize]{
+  \headrule
+  \sethead[\itshape\@shorttitle]
+  []
+  []
+  {\itshape\@shorttitle}
+  {}
+  {}
+  \footrule
+  \setfoot[\textcolor{SedK2}{Manuscript submitted to Sedimentologika}]
+  []
+  [\thepage]
+  {\textcolor{SedK2}{Manuscript submitted to Sedimentologika}}
+  {}
+  {\thepage}
+  \renewcommand{\makeheadrule}{\rule[-0.35\baselineskip]{\linewidth}{0.25pt}}
+  \renewcommand{\makefootrule}{\rule[0.65\baselineskip]{\linewidth}{0.25pt}}
 }
 
-\fancypagestyle{fancyps_publication}{
-  \fancyhf{}
-  \fancyhead[L]{\textcolor{SedK2}{\scriptsize\nouppercase\authors}}
-  \fancyhead[R]{\textcolor{SedK2}{\scriptsize\itshape\@shorttitle}}
-  \fancyfoot[L]{\textcolor{SedK2}{\scriptsize\nouppercase{\textbf{SEDIMENTOLOGIKA}~\textbullet~\@theyear~\textbar~Vol.~\@volumenumber.\@issuenumber}}}
-  \fancyfoot[R]{\textcolor{SedK2}{\scriptsize\thepage}}
+\newpagestyle{ps_submission_first}[\scriptsize]{
+  \sethead[\itshape\@shorttitle]
+  []
+  []
+  {\itshape\@shorttitle}
+  {}
+  {}
+  \footrule
+  \setfoot[\textcolor{SedK2}{Manuscript submitted to Sedimentologika}]
+  []
+  [\thepage]
+  {\textcolor{SedK2}{Manuscript submitted to Sedimentologika}}
+  {}
+  {\thepage}
+  \renewcommand{\makefootrule}{\rule[0.65\baselineskip]{\linewidth}{0.25pt}}
 }
 
-\fancypagestyle{fancyps_submissionfirstpage}{
-  \setlength{\headheight}{10mm}
-  \addtolength{\topmargin}{-6mm}
-  \fancyhf{}
-  \fancyfoot[L]{\textcolor{SedK2}{\scriptsize\nouppercase{Manuscript submitted to Sedimentologika}}}
-  \fancyfoot[R]{\textcolor{SedK2}{\scriptsize\thepage}}
-  \renewcommand\headrule{\nointerlineskip\smash{\color{SedK1}\rule{\headwidth}{0.0pt}}}
+% ---------------------------------
+% Proof styles
+
+\newpagestyle{ps_proof}[\scriptsize]{
+  \headrule
+  \sethead[\textcolor{SedK2}{\authors}]
+  []
+  [\textcolor{SedK2}{\itshape\@shorttitle}]
+  {\textcolor{SedK2}{\authors}}
+  {}
+  {\textcolor{SedK2}{\itshape\@shorttitle}}
+  \footrule
+  \setfoot[\textcolor{SedK2}{\textbf{SEDIMENTOLOGIKA}~\textbullet~PROOF}]
+  []
+  [\textcolor{SedK2}{\thepage}]
+  {\textcolor{SedK2}{\textbf{SEDIMENTOLOGIKA}~\textbullet~PROOF}}
+  {}
+  {\textcolor{SedK2}{\thepage}}
+  \renewcommand{\makeheadrule}{\color{SedK1}\rule[-0.35\baselineskip]{\linewidth}{0.25pt}}
+  \renewcommand{\makefootrule}{\color{SedK1}\rule[0.65\baselineskip]{\linewidth}{0.25pt}}
 }
 
-\fancypagestyle{fancyps_preprintfirstpage}{
-  \fancyhf{}
-  \fancyhead[C]{{\Large\nouppercase{\@preprintdeclaration}}}
-  \fancyfoot[L]{\scriptsize{PRE-PRINT:~\today}}
-  \fancyfoot[R]{{\scriptsize\thepage}}
-  \renewcommand\headrule{\nointerlineskip\smash{\color{SedK1}\rule{\headwidth}{0.0pt}}}
+\newpagestyle{ps_proof_first}[\scriptsize]{
+  \sethead[]
+  []
+  []
+  {{\setlength{\tabcolsep}{0pt}
+      \begin{tabular}[b]{l}
+        \includegraphics[height=12mm]{logos/SedimentologikaLogo.pdf}\\
+        \small\textcolor[HTML]{5e5e5e}{\raisebox{-0.4ex}{\normalsize\simpleicon{doi}}}\enspace\small PROOF
+      \end{tabular}
+  }}
+  {}
+  {}
+  \footrule
+  \setfoot[]
+  []
+  []
+  {\textcolor{SedK2}{PROOF~\today}}
+  {}
+  {\textcolor{SedK2}{\thepage}}
+  \renewcommand{\makefootrule}{\color{SedK1}\rule[0.65\baselineskip]{\linewidth}{0.25pt}}
 }
 
-\fancypagestyle{fancyps_prooffirstpage}{
-  \setlength{\headheight}{15mm}
-  \addtolength{\topmargin}{-10mm}
-  \fancyhf{}
-  \fancyhead[L]{
-    \includegraphics[height=12mm]{Sedimentologika_final_black.png}\tiny\par\small\textcolor[HTML]{5e5e5e}{\raisebox{-0.7ex}{\normalsize\simpleicon{doi}}}\href{https://example.com}{\enspace\small PROOF}
+% ---------------------------------
+% Publication styles
+
+\newpagestyle{ps_publication}[\scriptsize]{
+  \headrule
+  \sethead[\textcolor{SedK2}{\authors}]
+  []
+  [\textcolor{SedK2}{\itshape\@shorttitle}]
+  {\textcolor{SedK2}{\authors}}
+  {}
+  {\textcolor{SedK2}{\itshape\@shorttitle}}
+  \footrule
+  \setfoot[\textbf{SEDIMENTOLOGIKA}~\textbullet~\@theyear~\textbar~Volume~\@volumenumber,~Issue~\@issuenumber]
+  []
+  [\textcolor{SedK2}{\thepage}]
+  {\textbf{SEDIMENTOLOGIKA}~\textbullet~\@theyear~\textbar~Volume~\@volumenumber,~Issue~\@issuenumber}
+  {}
+  {\textcolor{SedK2}{\thepage}}
+  \renewcommand{\makeheadrule}{\color{SedK1}\rule[-0.35\baselineskip]{\linewidth}{0.25pt}}
+  \renewcommand{\makefootrule}{\color{SedK1}\rule[0.65\baselineskip]{\linewidth}{0.25pt}}
+}
+
+\newpagestyle{ps_publication_first}[\scriptsize]{
+  \sethead[]
+  []
+  []
+  {
+    {
+      \setlength{\tabcolsep}{0pt}
+      \begin{tabular}[b]{l}
+        \includegraphics[height=12mm]{logos/SedimentologikaLogo.pdf}\\
+        \small\textcolor[HTML]{5e5e5e}{\raisebox{-0.4ex}{\normalsize\simpleicon{doi}}}\enspace\small\href{https://doi.org/\@articledoi}{\enspace\small\@articledoi}
+      \end{tabular}
     }
-  \fancyfoot[L]{\textcolor{SedK2}{\scriptsize\nouppercase{PROOF~\today}}}
-  \fancyfoot[R]{\textcolor{SedK2}{\scriptsize\thepage}}
-  \renewcommand\headrule{\nointerlineskip\smash{\color{SedK1}\rule{\headwidth}{0.0pt}}}
-}
-
-\fancypagestyle{fancyps_publicationfirstpage}{
-  \setlength{\headheight}{15mm}
-  \addtolength{\topmargin}{-10mm}
-  \fancyhf{}
-  \fancyhead[L]{
-    \includegraphics[height=12mm]{Sedimentologika_final_black.png}\tiny\par\textcolor[HTML]{5e5e5e}{\raisebox{-0.7ex}{\normalsize\simpleicon{doi}}}\href{https://doi.org/\@articledoi}{\enspace\small\@articledoi}
-    }
-  \fancyfoot[L]{
-    \textcolor{SedK2}{\scriptsize\nouppercase{\textbf{SEDIMENTOLOGIKA}~ \textbullet~\@theyear~\textbar~Vol.~\@volumenumber.\@issuenumber~\textbar~eISSN 2813-415X \textbar~\href{https://www.unige.ch/biblio/en/openaccess/publish-a-journal/open-access-publications/}{Published by Geneva University Library Open Access Publications}}}
-    }
-  \fancyfoot[R]{\textcolor{SedK2}{\scriptsize\thepage}}
-  \renewcommand\headrule{\nointerlineskip\smash{\color{SedK1}\rule{\headwidth}{0.0pt}}}
   }
-  % ----------------------------------------------------------------------------------------
-  % Class option switches
-  % ----------------------------------------------------------------------------------------
 
-  \if@preprint
-  \pretitle{
+  {}
+  {}
+  \footrule
+  \setfoot[]
+  []
+  []
+  {
+    \textbf{SEDIMENTOLOGIKA}~\textbullet~\@theyear~\textbar~Volume~\@volumenumber, ~Issue~\@issuenumber~\textbar~eISSN~2813-415X~\textbar~\href{https://www.unige.ch/biblio/en/openaccess/publish-a-journal/open-access-publications/}{Published by Geneva University Library Open Access Publications}
+  }
+  {}
+  {\textcolor{SedK2}{\thepage}}
+  \renewcommand{\makefootrule}{\color{SedK1}\rule[0.65\baselineskip]{\linewidth}{0.25pt}}
+}
+
+% ----------------------------------------------------------------------------------------
+% Class option switches
+% ----------------------------------------------------------------------------------------
+
+\if@preprint
+\pretitle{
   \begin{RaggedRight}
-  \fontsize{18pt}{18pt}\selectfont
-  \bfseries
+    \fontsize{18pt}{18pt}\selectfont
+    \bfseries
   }
   \else
   \pretitle{
@@ -664,12 +741,12 @@ bib-item-sep = 8 pt plus 4 pt minus 2 pt}
   \renewcommand\maketitlehookd{%
     \@insert@metadata
     \begin{RaggedRight}
-      \begin{textblock*}{0.8\textwidth}[0,1](15mm,278mm)
+      \begin{textblock*}{0.8\textwidth}[0,1](15mm,277mm)
         \footnotesize\textcolor{SedK1}{This open access article \copyright~\@theyear~\authors~is licensed under the \href{https://creativecommons.org/licenses/by/4.0/}{CC BY 4.0 license.}}
       \end{textblock*}
     \end{RaggedRight}
     \begin{flushright}
-      \begin{textblock*}{20mm}[1,1](195mm,277.5mm)
+      \begin{textblock*}{20mm}[1,1](195mm,277mm)
         \promohref[SedkGrey]{https://creativecommons.org/licenses/by/4.0/}
         {\ccby}
       \end{textblock*}
@@ -682,12 +759,12 @@ bib-item-sep = 8 pt plus 4 pt minus 2 pt}
   \renewcommand\maketitlehookd{%
     \@insert@metadata
     \begin{RaggedRight}
-      \begin{textblock*}{0.8\textwidth}[0,1](15mm,278mm)
+      \begin{textblock*}{0.8\textwidth}[0,1](15mm,277mm)
         \footnotesize\textcolor{SedK1}{This open access article \copyright~\@theyear~\authors~is licensed under the \href{https://creativecommons.org/licenses/by/4.0/}{CC BY 4.0 license.}}
       \end{textblock*}
     \end{RaggedRight}
     \begin{flushright}
-      \begin{textblock*}{20mm}[1,1](195mm,277.5mm)
+      \begin{textblock*}{20mm}[1,1](195mm,277mm)
         \promohref[SedkGrey]{https://creativecommons.org/licenses/by/4.0/}
         {\ccby}
       \end{textblock*}
@@ -701,7 +778,7 @@ bib-item-sep = 8 pt plus 4 pt minus 2 pt}
     \@insert@preprintdeclaration
     \begin{RaggedRight}
       \begin{textblock*}{0.8\textwidth}[0,1](15mm,276mm)
-        \footnotesize\textcolor{SedK1}{This pre-print is provided by the authors\\\@theyear}
+        \footnotesize\textcolor{SedK1}{This pre-print is provided by the authors}
       \end{textblock*}
     \end{RaggedRight}
   }
@@ -710,31 +787,45 @@ bib-item-sep = 8 pt plus 4 pt minus 2 pt}
   \if@submission
   \newcommand{\SedKtitle}[3]{%
     \if@anonymous
-    \LARGE\textcolor{SedK1}{\@title}
-    \thispagestyle{fancyps_submissionfirstpage}
+      \LARGE\textcolor{SedK1}{\@title}
+      \thispagestyle{ps_submission_first}
     \else
-    \maketitle
-    \thispagestyle{fancyps_submissionfirstpage}
+      \maketitle
+      \thispagestyle{ps_submission_first}
     \fi
     \linenumbers
+    \normalsize
     \abstract{#2}
     \plainlanguagesummary{#1}
     #3
     \normalsize
-    }
+  }
+  \else
+  \newcommand{\SedKtitle}[3]{%
+    \if@preprint
     \else
-    \newcommand{\SedKtitle}[3]{%
+    \newgeometry{
+      hmargin=15mm,
+      bmargin=20mm,
+      headheight=16mm,
+      headsep=2mm,
+      tmargin=32mm,
+      footskip=5mm,
+      marginparsep=1mm,
+      marginparwidth=10mm
+    }
+    \fi
     \twocolumn[
       {
         \maketitle
         \if@preprint
-        \thispagestyle{fancyps_preprintfirstpage}
+        \thispagestyle{ps_preprint_first}
         \fi
         \if@proof
-        \thispagestyle{fancyps_prooffirstpage}
+        \thispagestyle{ps_proof_first}
         \fi
         \if@publication
-        \thispagestyle{fancyps_publicationfirstpage}
+        \thispagestyle{ps_publication_first}
         \fi
       }
       \changetext{}{100mm}{}{}{}
@@ -742,27 +833,29 @@ bib-item-sep = 8 pt plus 4 pt minus 2 pt}
       \abstract{#2}
       \vspace{\fill}
     ]
+    \clearpage
+    \restoregeometry
     \ifx#3\@empty
-      \twocolumn[
-          \plainlanguagesummary{#1}
-      \vglue 1\baselineskip
-       ]
+    \twocolumn[
+      \plainlanguagesummary{#1}
+      \vglue 2\baselineskip
+    ]
     \else
-      \twocolumn[
-      \plainlanguagesummary{#1} % if we need to bump the pls due to abstract lengths
+    \twocolumn[
+      \plainlanguagesummary{#1}
       #3
-      \vglue 1\baselineskip
-      ]
+      \vglue 2\baselineskip
+    ]
     \fi
   }
   \fi
 
   \if@preprint
-  \pagestyle{fancyps_preprint}
+  \pagestyle{ps_preprint}
   \fi
 
   \if@submission
-  \pagestyle{fancyps_submission}
+  \pagestyle{ps_submission}
   \setkeys{draftwatermark}{text={FOR REVIEW ONLY}, stamp=true}
   \RequirePackage{lineno}
   \renewcommand*\linenumberfont{\scriptsize}
@@ -771,12 +864,12 @@ bib-item-sep = 8 pt plus 4 pt minus 2 pt}
   \fi
 
   \if@proof
-  \pagestyle{fancyps_proof}
+  \pagestyle{ps_proof}
   \setkeys{draftwatermark}{text={PROOF}, stamp=true}
   \fi
 
   \if@publication
-  \pagestyle{fancyps_publication}
+  \pagestyle{ps_publication}
   \fi
 
   \if@anonymous
