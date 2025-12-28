@@ -10,7 +10,7 @@
 % Class declaration and switches
 % ----------------------------------------------------------------------------------------
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{sedimentologika}[2025-12-10 Sedimentologika LaTeX class]
+\ProvidesClass{sedimentologika}[2025-12-29 Sedimentologika LaTeX class]
 
 \newif\if@onecolumn
 \@onecolumnfalse
