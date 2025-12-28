@@ -106,6 +106,9 @@
 bib-item-sep = 8 pt plus 4 pt minus 2 pt}
 \fi
 
+\DeclareSIUnit{\year}{yr}
+\DeclareSIUnit{\annum}{a}
+
 \definecolor{SedK1}{HTML}{06595a} % #06595a
 \definecolor{SedK2}{HTML}{086162} % #086162
 \definecolor{SedK3}{HTML}{0a696a} % #0a696a
