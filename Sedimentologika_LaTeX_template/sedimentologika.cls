@@ -10,7 +10,7 @@
 % Class declaration and switches
 % ----------------------------------------------------------------------------------------
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{sedimentologika}[2025-12-29 Sedimentologika LaTeX class]
+\ProvidesClass{sedimentologika}[2025-12-30 Sedimentologika LaTeX class]
 
 \newif\if@onecolumn
 \@onecolumnfalse
@@ -97,6 +97,7 @@
 ]{geometry}
 \RequirePackage[parfill, skip={\baselinestretch}]{parskip}
 \RequirePackage{afterpage}
+\RequirePackage{fixme}
 
 \if@submission
 \cslsetup{style=apa, bib-item-sep = 8 pt plus 4 pt minus 2 pt}
@@ -731,6 +732,9 @@ bib-item-sep = 8 pt plus 4 pt minus 2 pt}
     \postauthor{
       \printCRediTifnotempty
       \@correspondingauthor
+      \if@proof
+        \\\textcolor{orange}{\small\fxnote[layout={inline}]{Please review author names and ORCiD links, affilitations, and CRedIT roles.}}
+      \fi
     \end{RaggedRight}
     \vspace*{-1mm}
   }
