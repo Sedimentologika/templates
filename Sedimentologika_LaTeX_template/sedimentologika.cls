@@ -10,7 +10,7 @@
 % Class declaration and switches
 % ----------------------------------------------------------------------------------------
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{sedimentologika}[2025-12-30 Sedimentologika LaTeX class]
+\ProvidesClass{sedimentologika}[2026-01-06 Sedimentologika LaTeX class]
 
 \newif\if@onecolumn
 \@onecolumnfalse
@@ -143,7 +143,7 @@ bib-item-sep = 8 pt plus 4 pt minus 2 pt}
 \newcommand{\copyedname}[1]{\gdef\@copyedname{#1}}
 \newcommand{\reviewername}[1]{\gdef\@reviewername{#1}}
 
-\newcommand{\onecolwidth}{86mm}
+\newcommand{\onecolwidth}{\dimexpr 86mm \relax}
 \newcommand{\twocolwidth}{\textwidth}
 
 \newcommand{\email}[1]{\texttt{\textcolor{SedK2}{\scriptsize #1}}}
