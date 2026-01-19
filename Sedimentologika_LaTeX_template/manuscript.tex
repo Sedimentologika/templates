@@ -1,6 +1,6 @@
 % ======================================================================================== %
 %       LaTeX pre-print and submission and production template for Sedimentologika         %
-%             v1.0.0 - December 2025, Sedimentologika Steering Committee                    %
+%             v1.0.0 - January 2026, Sedimentologika Steering Committee                    %
 % ======================================================================================== %
 %    This template and corresponding class are provided as is. Sedimentologika takes no
 %                  responsibility for your misuse of the provided files.
@@ -67,28 +67,64 @@
 % The below commented out code is an example for enabling non-roman alphabet (e.g. Arabic)
 % language support. You will need to have the appropriate Noto Sans font installed on your
 % system. Contact support@sedimentologika.org if you are unable to get this working.
+% This is an advanced usage. On Overleaf, the below commented out code will enable appropriate fonts in Arabic, Japanese, Chinese (simplified), and Korean.
 %
-% \babelfont[arabic]{rm}[
-%   Path = /usr/share/fonts/noto/ ,
-%   Extension = .ttf ,
-%   UprightFont = *-Regular ,
-%   BoldFont = *-Bold ,
-%   ItalicFont = *-Regular ,
-% BoldItalicFont = *-Bold]{NotoSansArabic}
-% \babelfont[arabic]{sf}[
-%   Path = /usr/share/fonts/noto/ ,
-%   Extension = .ttf ,
-%   UprightFont = *-Regular ,
-%   BoldFont = *-Bold ,
-%   ItalicFont = *-Regular ,
-% BoldItalicFont = *-Bold]{NotoSansArabic}
-% \babelfont[arabic]{tt}[
-%   Path = /usr/share/fonts/noto/ ,
-%   Extension = .ttf ,
-%   UprightFont = *-Regular ,
-%   BoldFont = *-Bold ,
-%   ItalicFont = *-Regular ,
-% BoldItalicFont = *-Bold]{NotoSansArabic}
+% \babelfont[arabic]{rm}[%
+%   Path={translation-fonts/},
+%   BoldFont={NotoSansArabic-VariableFont_wdth,wght.ttf},
+%   Numbers={Proportional,Lining},
+%   UprightFeatures={Weight=350},
+%   BoldFeatures={Weight=600}
+% ]{NotoSansArabic-VariableFont_wdth,wght.ttf}
+% \babelfont[arabic]{sf}[%
+%   Path={translation-fonts/},
+%   BoldFont={NotoSansArabic-VariableFont_wdth,wght.ttf},
+%   Numbers={Proportional,Lining},
+%   UprightFeatures={Weight=350},
+%   BoldFeatures={Weight=600}
+% ]{NotoSansArabic-VariableFont_wdth,wght.ttf}
+% \babelfont[japanese]{rm}[%
+%   Path={translation-fonts/},
+%   BoldFont={NotoSansJP-VariableFont_wght.ttf},
+%   Numbers={Proportional,Lining},
+%   UprightFeatures={Weight=350},
+%   BoldFeatures={Weight=600}
+% ]{NotoSansJP-VariableFont_wght.ttf}
+% \babelfont[japanese]{sf}[%
+%   Path={translation-fonts/},
+%   BoldFont={NotoSansJP-VariableFont_wght.ttf},
+%   Numbers={Proportional,Lining},
+%   UprightFeatures={Weight=350},
+%   BoldFeatures={Weight=600}
+% ]{NotoSansJP-VariableFont_wght.ttf}
+% \babelfont[korean]{rm}[%
+%   Path={translation-fonts/},
+%   BoldFont={NotoSansKR-VariableFont_wght.ttf},
+%   Numbers={Proportional,Lining},
+%   UprightFeatures={Weight=350},
+%   BoldFeatures={Weight=600}
+% ]{NotoSansKR-VariableFont_wght.ttf}
+% \babelfont[korean]{sf}[%
+%   Path={translation-fonts/},
+%   BoldFont={NotoSansKR-VariableFont_wght.ttf},
+%   Numbers={Proportional,Lining},
+%   UprightFeatures={Weight=350},
+%   BoldFeatures={Weight=600}
+% ]{NotoSansKR-VariableFont_wght.ttf}
+% \babelfont[chinese-simplified]{rm}[%
+%   Path={translation-fonts/},
+%   BoldFont={NotoSansSC-VariableFont_wght.ttf},
+%   Numbers={Proportional,Lining},
+%   UprightFeatures={Weight=350},
+%   BoldFeatures={Weight=600}
+% ]{NotoSansSC-VariableFont_wght.ttf}
+% \babelfont[chinese-simplified]{sf}[%
+%   Path={translation-fonts/},
+%   BoldFont={NotoSansSC-VariableFont_wght.ttf},
+%   Numbers={Proportional,Lining},
+%   UprightFeatures={Weight=350},
+%   BoldFeatures={Weight=600}
+% ]{NotoSansSC-VariableFont_wght.ttf}
 % ---------------------------------------------------------------------------------------- %
 %
 % ======================================================================================== %
@@ -203,11 +239,6 @@
 }
 {%
   %\translation{language}{AbstractTranslationTitle}{Replace this text with the translation of your abstract if you are providing one. Remember to set the language to the appropriate \href{https://ctan.org/pkg/babel}{babel language code}. Otherwise, comment out this section.}
-  \translation{spanish}{Resumen}{
-    Reemplace este texto con la traducción de su resumen si va a proporcionarla.
-    Recuerde establecer el idioma con el \href{https://ctan.org/pkg/babel}{código de idioma de babel} correspondiente.
-    De lo contrario, comente esta sección.
-  }
 }
 
 % ---------------------------------------------------------------------------------------- %
