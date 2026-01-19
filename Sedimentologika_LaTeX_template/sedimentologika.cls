@@ -447,7 +447,7 @@ bib-item-sep = 8 pt plus 4 pt minus 2 pt}
 }{\RequirePackage{noto-mono}}
 
 \IfFontExistsTF{Noto Sans Math Regular}{
-  \setmathfont{notosansmath-regular}
+  \setmathfont{notosansmath-regular.otf}
 }{
   \RequirePackage{notomath}
 }
