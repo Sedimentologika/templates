@@ -153,22 +153,22 @@
 %              Primary Article Information (tile, authors, contributions)                  %
 % ======================================================================================== %
 \title{This is a long title} % Replace this with your articles full title, no length limit, but keep it reasonable
-\shorttitle{A short title} % Replace "A short title", it needs to be ≤ 50 characters long.
+\shorttitle{A short title} % Replace "A short title", it should be ≤ 50 characters long.
 % ---------------------------------------------------------------------------------------- %
 %                          Instructions for author list.                                   %
 %
-%  For each author use \author[1]{Given Names FamilyName\orcidlink{ORCiD Number}}
-%      * where [1] is the affiliation number.
+%  For each author use \author[1]{Given Names FamilyName~\orcidlink{ORCiD Number}}
+%      * where [1] is the affiliation number(s)
+%      * authors can have multiple affiliations e.g. [1,2,4]
 %      * please list ORCiDs if you have them by adding the id as shown above
 %  Note the corresponding author with an asterisk after author name but before their ORCiD
 %  If an author does not have an ORCiD please remove the \orcidlink{orcid-val}
 %
 %  Define each affiliation with \affil[1]{Affiliation}
 %      * replace 1 with the next available number, for subsequent affiliations
-%      * authors can have multiple affiliations e.g. [1,2,4]
 %
 %                Add as many author and affiliation lines as you need
-\author[1,2]{Author A*\orcidlink{0000-0002-2771-9344}}
+\author[1,2]{Author A*~\orcidlink{0000-0002-2771-9344}}
 \author[1]{Author B}
 \affil[1]{Affiliation 1}
 \affil[2]{Affiliation 2}
@@ -178,22 +178,22 @@
 % ---------------------------------------------------------------------------------------- %
 %             CRediT Statement (this is mandatory for Sedimentologika)
 %                    See https://credit.niso.org/ for details.
-%   Instructions: add authors (can be just initials) to the appropriate roles, separate
-%   authors by a comma, turn off roles you don't use by commenting them out
-\CRediT{Writing-original draft}{AA}
-\CRediT{Writing-review \& editing}{AA, AB}
-\CRediT{Visualization}{AA, AB}
-\CRediT{Conceptualization}{AA, AB}
-\CRediT{Data curation}{AA, AB}
-\CRediT{Formal analysis}{AA, AB}
-\CRediT{Investigation}{AA, AB}
-\CRediT{Methodology}{AA, AB}
-\CRediT{Software}{AA, AB}
-\CRediT{Resources}{AA, AB}
-\CRediT{Validation}{AA, AB}
-\CRediT{Supervision}{AA, AB}
-\CRediT{Project administration}{AA, AB}
-\CRediT{Funding acquisition}{AA, AB}
+%   Instructions: add author initials (so they are unique) to the appropriate roles,
+%   separate authors by a comma, turn off roles you don't use by commenting (%) them out
+\CRediT{Writing-original draft}{}
+\CRediT{Writing-review \& editing}{}
+\CRediT{Visualization}{}
+\CRediT{Conceptualization}{}
+\CRediT{Data curation}{}
+\CRediT{Formal analysis}{}
+\CRediT{Investigation}{}
+\CRediT{Methodology}{}
+\CRediT{Software}{}
+\CRediT{Resources}{}
+\CRediT{Validation}{}
+\CRediT{Supervision}{}
+\CRediT{Project administration}{}
+\CRediT{Funding acquisition}{}
 %
 % ---------------------------------------------------------------------------------------- %
 \keywords{Keyword 1\\Keyword 2} % List up to five keywords, separated by \\
@@ -202,7 +202,7 @@
 %                             Additional Document Setup                                    %
 % ======================================================================================== %
 %                           Bibliography file - REQUIRED                                   %
-% \addbibresource{Example.json} % uncomment this and replace Example.json with your .bib or csl .json
+\addbibresource{Example.json} % replace Example.json with your csl .json or .bib file
 %                        The ref style is already set to APA7
 %
 %                                Acceptable figure types
@@ -237,7 +237,7 @@
   It should not exceed 2000 characters including spaces.
   The combined lengths of the abstract and plain language summary are somewhat flexible depending on the number of authors, affiliations, and CRedIT statement.
 }
-{%
+{% translations of abstract and plain language summary %
   %\translation{language}{AbstractTranslationTitle}{Replace this text with the translation of your abstract if you are providing one. Remember to set the language to the appropriate \href{https://ctan.org/pkg/babel}{babel language code}. Otherwise, comment out this section.}
 }
 

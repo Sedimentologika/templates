@@ -441,8 +441,8 @@ bib-item-sep = 8 pt plus 4 pt minus 2 pt}
   \babelfont{tt}[%
     BoldFont={notosansmono-variablefont_wdth,wght.ttf},
     Numbers={Proportional,Lining},
-    UprightFeatures={Weight=400},
-    BoldFeatures={Weight=700}
+    UprightFeatures={Weight=350},
+    BoldFeatures={Weight=600}
   ]{notosansmono-variablefont_wdth,wght.ttf}
 }{\RequirePackage{noto-mono}}
 
