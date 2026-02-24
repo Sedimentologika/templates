@@ -3,14 +3,14 @@
 % https://oap.unige.ch/journals/sdk/
 % Current version with inputs from:
 % Jarred C Lloyd
-% Last updated:
+% Last updated: 2026-02-24
 % Derived from seismica.cls, and WeAreAGC submission template.
 
 % ----------------------------------------------------------------------------------------
 % Class declaration and switches
 % ----------------------------------------------------------------------------------------
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{sedimentologika}[2026-01-06 Sedimentologika LaTeX class]
+\ProvidesClass{sedimentologika}[2026-02-24 Sedimentologika LaTeX class]
 
 \newif\if@onecolumn
 \@onecolumnfalse
@@ -447,7 +447,7 @@ bib-item-sep = 8 pt plus 4 pt minus 2 pt}
 }{\RequirePackage{noto-mono}}
 
 \IfFontExistsTF{Noto Sans Math Regular}{
-  \setmathfont{notosansmath-regular.otf}
+  \setmathfont{notosansmath-regular}
 }{
   \RequirePackage{notomath}
 }
@@ -476,50 +476,50 @@ bib-item-sep = 8 pt plus 4 pt minus 2 pt}
 % ----------------------------------------------------------------------------------------
 
 \if@preprint
-  \hypersetup{
-    colorlinks=true,
-    linkcolor=blue,
-    anchorcolor=black,
-    citecolor=blue,
-    filecolor=black,
-    menucolor=black,
-    runcolor=black,
-    urlcolor=blue
-  }
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue,
+  anchorcolor=black,
+  citecolor=blue,
+  filecolor=black,
+  menucolor=black,
+  runcolor=black,
+  urlcolor=blue
+}
 
-  \newcommand{\printCRediTifnotempty}{%
-    \ifdim\DTLrowcount{CRediTs}pt=0pt
-    \else
-    \vglue 0.5\baselineskip
-    \footnotesize\RaggedRight\textcolor{black}{\textbf{CRediT statement: }}
-    \DTLforeach*{CRediTs}{
-    \Credrole=credrole, \Credauthor=credauthor}{\textcolor{black}{ \textit{\Credrole}: \Credauthor. }
-    }
-    \fi
+\newcommand{\printCRediTifnotempty}{%
+  \ifdim\DTLrowcount{CRediTs}pt=0pt
+  \else
+  \vglue 0.5\baselineskip
+  \footnotesize\RaggedRight\textcolor{black}{\textbf{CRediT statement: }}
+  \DTLforeach*{CRediTs}{
+  \Credrole=credrole, \Credauthor=credauthor}{\textcolor{black}{ \textit{\Credrole}: \Credauthor. }
   }
+  \fi
+}
 
 \else
-  \hypersetup{
-    colorlinks=true,
-    linkcolor=SedK3,
-    anchorcolor=black,
-    citecolor=SedK2,
-    filecolor=black,
-    menucolor=black,
-    runcolor=black,
-    urlcolor=SedK3
-  }
+\hypersetup{
+  colorlinks=true,
+  linkcolor=SedK3,
+  anchorcolor=black,
+  citecolor=SedK2,
+  filecolor=black,
+  menucolor=black,
+  runcolor=black,
+  urlcolor=SedK3
+}
 
-  \newcommand{\printCRediTifnotempty}{%
-    \ifdim\DTLrowcount{CRediTs}pt=0pt
-    \else
-    \vglue 0.5\baselineskip
-    \footnotesize\RaggedRight\textcolor{SedK2}{\textbf{CRediT statement: }}
-    \DTLforeach*{CRediTs}{
-    \Credrole=credrole, \Credauthor=credauthor}{\textcolor{SedK2}{ \textit{\Credrole}: \Credauthor. }
-    }
-    \fi
+\newcommand{\printCRediTifnotempty}{%
+  \ifdim\DTLrowcount{CRediTs}pt=0pt
+  \else
+  \vglue 0.5\baselineskip
+  \footnotesize\RaggedRight\textcolor{SedK2}{\textbf{CRediT statement: }}
+  \DTLforeach*{CRediTs}{
+  \Credrole=credrole, \Credauthor=credauthor}{\textcolor{SedK2}{ \textit{\Credrole}: \Credauthor. }
   }
+  \fi
+}
 
 \fi
 
@@ -568,7 +568,6 @@ bib-item-sep = 8 pt plus 4 pt minus 2 pt}
 
 % ---------------------------------
 % Submission styles
-
 
 \newpagestyle{ps_submission}[\scriptsize]{
   \headrule
@@ -733,7 +732,7 @@ bib-item-sep = 8 pt plus 4 pt minus 2 pt}
       \printCRediTifnotempty
       \@correspondingauthor
       \if@proof
-        \\\textcolor{orange}{\small\fxnote[layout={inline}]{Please review author names and ORCiD links, affilitations, and CRedIT roles.}}
+      \\\textcolor{orange}{\small\fxnote[layout={inline}]{Please review author names and ORCiD links, affilitations, and CRedIT roles.}}
       \fi
     \end{RaggedRight}
     \vspace*{-1mm}
@@ -794,11 +793,11 @@ bib-item-sep = 8 pt plus 4 pt minus 2 pt}
   \if@submission
   \newcommand{\SedKtitle}[3]{%
     \if@anonymous
-      \LARGE\textcolor{SedK1}{\@title}
-      \thispagestyle{ps_submission_first}
+    \LARGE\textcolor{SedK1}{\@title}
+    \thispagestyle{ps_submission_first}
     \else
-      \maketitle
-      \thispagestyle{ps_submission_first}
+    \maketitle
+    \thispagestyle{ps_submission_first}
     \fi
     \linenumbers
     \normalsize
