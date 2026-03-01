@@ -140,6 +140,7 @@ bib-item-sep = 8 pt plus 4 pt minus 2 pt}
 \newcommand{\execedname}[1]{\gdef\@execedname{#1}}
 \newcommand{\assocedname}[1]{\gdef\@assocedname{#1}}
 \newcommand{\prodmanname}[1]{\gdef\@prodmanname{#1}}
+\newcommand{\prodassist}[1]{\gdef\@prodassist{#1}}
 \newcommand{\copyedname}[1]{\gdef\@copyedname{#1}}
 \newcommand{\reviewername}[1]{\gdef\@reviewername{#1}}
 
@@ -386,6 +387,7 @@ bib-item-sep = 8 pt plus 4 pt minus 2 pt}
   \printifnotempty{Associate Editor}{\par}{\@assocedname}{\vspace{3mm}}
   \printifnotempty{Reviewers}{\par}{\@reviewername}{\vspace{3mm}}
   \printifnotempty{Production Manager}{\par}{\@prodmanname}{\vspace{3mm}}
+  \printifnotempty{Production Assistant}{\par}{\@prodassist}{\vspace{3mm}}
   \printifnotempty{Copy Editor}{\par}{\@copyedname}{\vspace{3mm}}
   \printifnotempty{Received:}{~}{\@receiveddate}{\par}
   \printifnotempty{Accepted:}{~}{\@accepteddate}{\par}
