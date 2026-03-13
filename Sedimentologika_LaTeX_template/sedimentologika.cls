@@ -407,10 +407,6 @@ bib-item-sep = 8 pt plus 4 pt minus 2 pt}
 % \displaywidowpenalty10000
 \hyphenpenalty8000
 
-\renewcommand*{\figureautorefname}{Fig.}
-\renewcommand*{\tableautorefname}{Tab.}
-\renewcommand*{\equationautorefname}{Eq.}
-
 \frenchspacing
 \raggedbottom
 \linespread{1.2}
