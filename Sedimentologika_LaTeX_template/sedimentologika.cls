@@ -407,6 +407,11 @@ bib-item-sep = 8 pt plus 4 pt minus 2 pt}
 % \displaywidowpenalty10000
 \hyphenpenalty8000
 
+\renewcommand{\topfraction}{0.85}
+\renewcommand{\bottomfraction}{0.85}
+\setcounter{topnumber}{1}
+\setcounter{bottomnumber}{1}
+
 \frenchspacing
 \raggedbottom
 \linespread{1.2}
