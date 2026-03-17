@@ -1,6 +1,6 @@
 % ======================================================================================== %
 %       LaTeX pre-print and submission and production template for Sedimentologika         %
-%             v1.0.1 - March 2026, Sedimentologika Steering Committee                    %
+%             v1.1.0 - March 2026, Sedimentologika Steering Committee                    %
 % ======================================================================================== %
 %    This template and corresponding class are provided as is. Sedimentologika takes no
 %                  responsibility for your misuse of the provided files.
@@ -149,6 +149,11 @@
 \copyedname{}
 \reviewername{}
 \authorshdr{}
+\metaauthlist{}
+
+% \AtEndPreamble{
+%   \input{articlemetadata.tex}
+% }
 %
 % ======================================================================================== %
 %              Primary Article Information (tile, authors, contributions)                  %
@@ -203,7 +208,7 @@
 %                             Additional Document Setup                                    %
 % ======================================================================================== %
 %                           Bibliography file - REQUIRED                                   %
-\addbibresource{Example.json} % replace Example.json with your csl .json or .bib file
+% \addbibresource{Example.json} % replace Example.json with your csl .json or .bib file
 %                        The ref style is already set to APA7
 %
 %                                Acceptable figure types
@@ -218,6 +223,7 @@
 %     distributions.
 %
 % \usepackage{packagename}
+
 %
 % ======================================================================================== %
 %                                    Manuscript                                            %
@@ -303,4 +309,5 @@ This is a mandatory section, replace this text.
 } % change as appropriate, this is mandatory if stating no external funding sources
 
 % \printbibliography % uncomment this when you've added you reference library file.
+
 \end{document}

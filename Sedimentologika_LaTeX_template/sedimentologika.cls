@@ -3,14 +3,14 @@
 % https://oap.unige.ch/journals/sdk/
 % Current version with inputs from:
 % Jarred C Lloyd
-% Last updated: 2026-03-16
+% Last updated: 2026-03-17
 % Derived from seismica.cls, and WeAreAGC submission template.
 
 % ----------------------------------------------------------------------------------------
 % Class declaration and switches
 % ----------------------------------------------------------------------------------------
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{sedimentologika}[2026-03-16 Sedimentologika LaTeX class]
+\ProvidesClass{sedimentologika}[2026-03-17 Sedimentologika LaTeX class]
 
 \newif\if@onecolumn
 \@onecolumnfalse
@@ -99,6 +99,7 @@
 \RequirePackage[parfill, skip={\baselinestretch}]{parskip}
 \RequirePackage{afterpage}
 \RequirePackage{fixme}
+\RequirePackage{xstring}
 
 \if@submission
 \cslsetup{style=apa, bib-item-sep = 8 pt plus 4 pt minus 2 pt}
@@ -127,15 +128,39 @@ bib-item-sep = 8 pt plus 4 pt minus 2 pt}
 
 % Article info
 \newcommand{\articletype}[1]{\gdef\@articletype{#1}}
-\newcommand{\volumenumber}[1]{\gdef\@volumenumber{#1}}
-\newcommand{\issuenumber}[1]{\gdef\@issuenumber{#1}}
+\newcommand{\volumenumber}[1]{%
+  \gdef\@volumenumber{#1}%
+  \global\edef\metavolume{#1}%
+}
+\newcommand{\issuenumber}[1]{%
+  \gdef\@issuenumber{#1}%
+  \global\edef\metaissue{#1}%
+}
 \newcommand{\receiveddate}[1]{\gdef\@receiveddate{#1}}
 \newcommand{\accepteddate}[1]{\gdef\@accepteddate{#1}}
 \newcommand{\publisheddate}[1]{\gdef\@publisheddate{#1}}
-\newcommand{\theyear}[1]{\gdef\@theyear{#1}}
-\newcommand{\suppmat}[1]{\gdef\@suppmat{#1}}
-\newcommand{\articledoi}[1]{\gdef\@articledoi{#1}}
-\newcommand{\keywords}[1]{\gdef\@keywords{#1}}
+\newcommand{\theyear}[1]{%
+  \gdef\@theyear{#1}%
+  \global\edef\metayear{#1}%
+}
+\newcommand{\suppmat}[1]{%
+  \gdef\@suppmat{#1}%
+  \global\edef\metasupp{#1}%
+}
+\newcommand{\articledoi}[1]{%
+  \gdef\@articledoi{#1}%
+  \global\edef\metadoi{#1}%
+}
+\newcommand{\keywords}[1]{%
+  \gdef\@keywords{#1}%
+  % Perform the substitution in a group where we can use standard \edef
+  \begingroup
+  % Use \StrSubstitute to create the modified string in a temporary macro
+  \StrSubstitute{#1}{\\}{, }[\@tempmetakeywords]%
+  % Now make the assignment global
+  \global\let\metakeywords\@tempmetakeywords
+  \endgroup
+}
 
 % Volunteer names
 \newcommand{\execedname}[1]{\gdef\@execedname{#1}}
@@ -158,7 +183,8 @@ bib-item-sep = 8 pt plus 4 pt minus 2 pt}
 \renewcommand*{\Affilfont}{\mdseries\footnotesize}
 \setlength{\affilsep}{2mm}
 
-\newcommand{\correspondingauthor}[2]{\gdef\@correspondingauthor{\vskip 0.4em\scriptsize*Corresponding author: #1, \href{mailto:#2}{#2}}}
+\newcommand{\correspondingauthor}[2]{\gdef\@correspondingauthor{\vskip 0.4em\scriptsize*Corresponding author: #1, \href{mailto:#2}{#2}}
+\global\edef\metacontact{#2}}
 
 \NewCommandCopy{\authblkauthor}{\author}
 
@@ -193,7 +219,11 @@ bib-item-sep = 8 pt plus 4 pt minus 2 pt}
 %   \endgroup
 % } LaTex3 regex not working in this context and doesn't support unicode characters.
 
-\newcommand{\authorshdr}[1]{\gdef\authors{#1}}
+\newcommand{\authorshdr}[1]{%
+  \gdef\authors{#1}%
+  \global\edef\metaauth{#1}%
+}
+\newcommand{\metaauthlist}[1]{\global\edef\metaauthlist{#1}}
 
 % CRediT
 \DTLgnewdb{CRediTs}
@@ -395,6 +425,7 @@ bib-item-sep = 8 pt plus 4 pt minus 2 pt}
   \printifnotempty{Published:}{~}{\@publisheddate}{\vspace{4mm}}
   \printifnotempty{\textcolor{SedkGrey}{Keywords}}{\par}{\textcolor{SedkGrey}{\@keywords}}{\par}
 }
+
 % ----------------------------------------------------------------------------------------
 %  basic formatting, declaration of styles
 % ----------------------------------------------------------------------------------------
