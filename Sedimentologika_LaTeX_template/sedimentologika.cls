@@ -3,14 +3,14 @@
 % https://oap.unige.ch/journals/sdk/
 % Current version with inputs from:
 % Jarred C Lloyd
-% Last updated: 2026-03-17
+% Last updated: 2026-03-18
 % Derived from seismica.cls, and WeAreAGC submission template.
 
 % ----------------------------------------------------------------------------------------
 % Class declaration and switches
 % ----------------------------------------------------------------------------------------
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{sedimentologika}[2026-03-17 Sedimentologika LaTeX class]
+\ProvidesClass{sedimentologika}[2026-03-18 Sedimentologika LaTeX class]
 
 \newif\if@onecolumn
 \@onecolumnfalse
@@ -901,7 +901,7 @@ bib-item-sep = 8 pt plus 4 pt minus 2 pt}
   \setkeys{draftwatermark}{text={FOR REVIEW ONLY}, stamp=true}
   \RequirePackage{lineno}
   \renewcommand*\linenumberfont{\scriptsize}
-  \doublespacing
+  \linespread{2.0}
   \def\labelitemi{\raisebox{0.35ex}{\tiny$\textbullet$}}
   \fi
 
