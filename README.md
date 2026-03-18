@@ -86,7 +86,7 @@ You must:
   * Funding
   * Artificial intelligence use
 * Make accessible all data and code used in the study following the [FAIR principles](https://doi.org/10.1038/sdata.2016.18).
-  * Preferably via Zenodo, GitHub, figshare, PANGAEA etc. as it will provide a DOI and a citation for your data/code.
+  * Preferably via zenodo, GitHub, figshare, PANGAEA etc. as it will provide a DOI and a citation for your data/code.
 * When using colour schemes in figures, **ensure** that they are accessible.
   * [Scientific colour maps](https://doi.org/10.5281/zenodo.8409685) provides several ready to use schemes for many applications and programming languages.
   * Use sans-serif fonts, minimum size ≥ 6 pt (Noto Sans or equivalent size).
