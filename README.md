@@ -79,7 +79,7 @@ You must:
 
 * Use **one** dialect of English for the document (e.g. American OR Australian OR UK).
 * Provide a non-technical plain language summary.
-* Provide a CRediT author declaration
+* Provide a [CRediT](https://doi.org/10.5281/zenodo.18421449) author declaration
 * Provide the following statements (even if simply to state there are none)
   * Acknowledgements
   * Conflict of interest
