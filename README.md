@@ -71,7 +71,7 @@ project_dir
 > `manuscript.tex` is your primary document, this can be renamed to whatever you want the output filename to be.
 > A `bibliography.json` (CSL format) OR `bibliography.bib` must be present. You can change the name of this file as long as you also you change the name in the `manuscript.tex` file too.
 
-Test build `Guide_Example.tex` using LuaLaTeX in the example subfolder.
+Test build `guide_example.tex` using LuaLaTeX in the example subfolder.
 
 Use the `manuscript.tex` file to create your document, you can rename it to whatever you want or replace the content of `manuscript.tex`.
 
