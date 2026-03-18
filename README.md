@@ -99,7 +99,7 @@ We're making this class and template publicly available so anyone interested can
 
 ### Document Class
 
-{sedimentologika}` are:
+Options for the `{sedimentologika}` class are:
 
 - `[preprint]` to enable pre-print styling
 - `[submission]` to enable submission styling suitable for _Sedimentologika_
